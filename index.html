@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MDO | Sign in</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<header>
+	<div>
+		<h3><i class="fa fa-film text-warning"></i> MDO</h3>
+		<p class="subtitle text-warning">Movies Detail Org.</p>
+	</div>
+</header>
+<div class="form-container">
+	<p class="form-control" id="errorMsg"></p>
+	<form action="maingame.html" onsubmit="return validate()">
+		<div>
+			<label>Username:</label>
+			<input type="text" id="username" placeholder="username or email" required="" class="form-control" name="">
+		</div>
+		
+		
+		<div>
+			<label>Password:</label>
+			<input type="password" id="password" placeholder="password" required="" class="form-control" name="">
+		</div>
+
+		<div>
+			<button class="btn btn-dark btn-block mt-2" type="submit">Sign in</button>
+			<a href="register.html" target="_blank" style="left: 10%;position: relative;" class="text-dark">Dont have account, register</a>	
+		</div>	
+
+	</form>
+</div>
+<script type="text/javascript">
+	var username = document.getElementById('username');
+	var password = document.getElementById('password');
+	var errorMsg = document.getElementById('errorMsg');
+	var users_deserialized = JSON.parse(localStorage.getItem('users'));
+	
+
+	/*function validate(){
+		if ((username.value == localStorage.getItem('uname') || username.value == localStorage.getItem('email')) && password.value == localStorage.getItem('pass')) {
+			return true;
+		}
+		else{
+			errorMsg.style.display = 'block';
+			errorMsg.innerHTML = 'You have entered wrong username or password';
+			return false;
+		}
+	}*/
+
+	function validate(){
+		for(let i = 0;i<users_deserialized.length;i++){
+			if ((username.value == users_deserialized[i].username || username.value == users_deserialized[i].email) && password.value == users_deserialized[i].password) {
+			localStorage.setItem('index',JSON.stringify(users_deserialized.indexOf(users_deserialized[i])));	
+			return true;
+		}
+
+		}
+			errorMsg.style.display = 'block';
+			errorMsg.innerHTML = 'You have entered wrong username or password';
+			return false;
+	}
+
+
+	
+</script>
+</body>
+</html>

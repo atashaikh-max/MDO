@@ -1,0 +1,159 @@
+
+/*@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+}
+body{
+	background: #f2f2f2;
+}
+header{
+	padding: 15px;
+	display: flex;
+	justify-content: space-between;
+	text-align:center;
+	align-items: center;
+	text-align:center;
+	background: #000;
+	position: relative;
+	z-index: 10;
+	width: 100vw;
+	top: 0;
+	box-shadow: 0 10px 10px #fff; 
+}
+header h3{
+	/*font-family: 'Oswald', sans-serif;*/
+	font-family: 'Josefin Sans', sans-serif;
+	color: #fff;
+	margin-bottom: 0;
+	position: relative;
+	top: 10px;
+}
+header .subtitle{
+	margin-top: 0;
+	font-size: 14px;
+	position: relative;
+	top: 7px;
+	font-family: 'Comic Neue', cursive;
+	font-weight: 200;
+	color: #fff;
+}
+.form-container{
+	padding: 10px;
+	border-radius: 4px;
+	position: absolute;
+	top: 52%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.form-container label{
+	margin-top: 8px;
+	margin-bottom: 2px;
+}
+.form-control{
+	min-width: 220px;
+	width: 250px
+}
+#errorMsg{
+	background:#f99090;
+	border: #fb0707;
+	color: #fb0707;
+	display: none;
+	height: max-content;
+}
+header a{
+	color: #fff;
+}
+#greet{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 3em;
+	line-height: 35px;
+}
+.account-details-box:before{
+	content: '';
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	position: absolute;
+	right: 5px;
+	top: -8px;
+	transform: rotate(45deg);
+}
+
+.account-details-box{
+	position: absolute;
+	padding: 5px;
+	top: 90px;
+	right: 20px;
+	width: 80%;
+	max-width: 240px;
+	background: #fff;
+	border-radius: 4px;
+	box-shadow: 0 2px 10px rgba(0,0,0,.2);
+	transform:scale(0);
+	transition: .3s;
+	z-index: 12;
+	transform-origin: top right;
+}
+.active{
+	transform:scale(1);
+}
+.account-details-box ul{
+	list-style-type: none;
+	position: relative;
+	width: 100%;
+}
+.account-details-box ul li{
+	position: relative;
+	width: 100%;
+	line-height: 40px;
+}
+.account-details-box ul li i{
+	color:#000;
+	margin: 8px;
+}
+.account-details-box ul li:hover{
+	background: #f2f2f2;
+}
+
+@media screen and (max-width: 600px){
+
+	.btn-warning{
+		width: 25px;
+		height: 25px;
+		display: flex;
+		justify-content: center;
+		align-self: center;
+		font-size: 12px;
+	}
+	.title{
+		font-size: 24px;
+	}
+	.userBox{
+		font-size: 14px;
+	}
+}
+
+/* traversy media code*/
+
+#movies img, #movie img{
+  width:100%;
+}
+
+
+@media(min-width:960px){
+  #movies .col-md-3 .well{
+    height: 390px;
+  }
+
+  #movies .col-md-3 img{
+    height:240px;
+  }
+}

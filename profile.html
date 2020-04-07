@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<header>
+	<div style="display: flex;">
+		<button class="btn btn-light mr-3"><i class="fa fa-chevron-left"></i></button>
+		<h3>Profile</h3>
+	</div>
+</header>
+<form class="form-container">
+	<div>
+		<label>Username:</label>
+		<input type="text" id="username" class="form-control" disabled="" name="">
+	</div>
+
+	<div>
+		<label>Email:</label>
+		<input type="email" id="email" class="form-control" disabled="" name="">
+	</div>
+	
+	<a href="changepassword.html" style="position: relative;left: 26%;top: 10px;">Change Password</a>
+
+</form>
+
+<script type="text/javascript">
+	var users_deserialized = JSON.parse(localStorage.getItem('users'));
+	var index = parseInt(localStorage.getItem('index'));
+
+	var pageTitle = document.querySelector('title');
+	pageTitle.innerHTML = users_deserialized[index].username +' | Profile';
+
+	var username = document.getElementById('username').value = users_deserialized[index].username;
+	var email = document.getElementById('email').value = users_deserialized[index].email;
+	
+</script>
+
+</body>
+</html>

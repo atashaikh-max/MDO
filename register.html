@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Register Page | MDO</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">	
+	.form-container{
+	padding: 10px;
+	border-radius: 4px;
+	position: absolute;
+	top: 60%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+	</style>
+</head>
+<body>
+
+	<header>
+	<div>
+		<h3><i class="fa fa-film text-warning"></i> MDO</h3>
+		<p class="subtitle text-warning">Movies Detail Org.</p>
+	</div>
+	</header>
+
+	<div class="form-container">
+		<p class="form-control" id="errorMsg"></p>
+		<form action="index.html" onsubmit="return register()">
+
+			<div>
+				<label>Username:</label>
+				<input type="text" id="username" placeholder="username" required="" class="form-control" name="">
+			</div>
+
+			<div>
+				<label>Email Id:</label>
+				<input type="email" id="email" placeholder="email id" required="" class="form-control" name="">
+			</div>
+
+			<div>
+				<label>DOB <span style="color: grey;font-size: 12px;">(DDMMYYYY)</span> :</label>
+				<input type="text" name="" placeholder="DDMMYYYY" onkeyup="lettersOnly(this)" class="form-control" id="dob" maxlength="8" required="">
+			</div>
+			
+			
+			<div>
+				<label>Password:</label>
+				<input type="password" id="password" placeholder="password" required="" class="form-control" name="">
+			</div>
+
+			<div>
+				<button class="btn btn-dark btn-block mt-2" type="submit">Register</button>
+				<a href="index.html" target="_blank" class="text-dark" style="margin-left: 40%;">Sign in</a>	
+			</div>	
+
+		</form>
+	</div>
+</body>
+<script type="text/javascript">
+	var username = document.getElementById('username');
+	var email = document.getElementById('email');
+	var dob = document.getElementById('dob');
+	var password = document.getElementById('password');
+	var errorMsg = document.getElementById('errorMsg');
+	
+	/*function register(){
+		if (username.value.length < 3) {
+			errorMsg.style.display = 'block';
+			errorMsg.innerHTML = 'Username should be greater than 2';
+			console.log(username.value.length);
+			return false;
+		}
+		if (password.value.length < 8) {
+			errorMsg.style.display = 'block';
+			errorMsg.innerHTML = 'Password must be of atleast 8 characters';
+			return false;
+		}
+		else{
+			localStorage.setItem('uname',username.value);
+			localStorage.setItem('email',email.value);
+			localStorage.setItem('pass',password.value);
+			return true;
+		}
+	}*/
+
+	//Local Database Framework by Ata Shaikh
+
+
+	var users = [];
+
+		window.addEventListener('load',function(){
+
+		for(var i = 0;i < users_deserialized.length;i++){
+				users.push(users_deserialized[i]);
+		}
+		});
+
+	function register(){
+
+		if(username.value.length < 3){
+			errorMsg.style.display = 'block';
+			errorMsg.innerHTML = 'Username should be greater than 2';
+			return false;
+		}
+		if (password.value.length < 8) {
+			errorMsg.style.display = 'block';
+			errorMsg.innerHTML = 'Password must be of atleast 8 characters';
+			return false;
+		}
+		if (dob.value.length < 8) {
+			errorMsg.style.display = 'block';
+			errorMsg.innerHTML = 'Date of Birth should be of 8 characters';
+			return false;			
+		}
+		else{
+			user = {
+				username:username.value,
+				email:email.value,
+				dob:dob.value,
+				password:password.value
+			}
+		users.push(user);
+
+		localStorage.setItem('users',JSON.stringify(users));
+
+		}
+	}
+	if (localStorage.getItem('users') === null) {
+		localStorage.setItem('users',JSON.stringify({username:'admin',email:'admin@email.com',dob:'20102000',password:'admin123'}));
+	}
+	
+	function lettersOnly(input){
+		var regEx=/[^0-9]/g;
+		input.value=input.value.replace(regEx,"");
+	}
+	
+	var users_deserialized = JSON.parse(localStorage.getItem('users'));
+	
+</script>
+</html>

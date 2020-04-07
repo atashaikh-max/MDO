@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MDO</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://bootswatch.com/cyborg/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		.userBox{
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			color: #fff;
+		}
+
+
+	</style>
+</head>
+<body>
+<header>
+	<div>
+		<h3><i class="fa fa-film text-warning"></i> MDO</h3>
+		<p class="subtitle">Movies Detail Org.</p>
+	</div>
+	<p id="username" style="font-family: sans-serif;color: #000;position: relative;top: 10px;"></p>
+</header>
+<div id="accountDetailsBox" class="account-details-box">
+	<ul>
+		<li><a href="index.html"><i class="fa fa-plus"> </i> Add Account</a></li>
+		<li><a href="profile.html"><i class="fa fa-user"> </i> Visit Profile</a></li>
+		<li><a href="#"><i class="fa fa-user-secret"> </i> Privacy</a></li>
+		<li><button class="btn btn-dark btn-block" style="margin-bottom: 0;" onclick="logout()">Log out</button></li>
+	</ul>
+</div>
+<!--<div class="form-container">
+	<form>
+		<div>
+			<label>Title:</label>
+			<input type="text" id="title" required="" placeholder="Movie name" class="form-control" name="">
+		</div>
+
+		<button class="btn btn-dark mt-2" type="submit">Search Movie</button>
+		<button class="btn btn-default mt-2" type="reset">Clear</button>
+
+	</form>
+
+</div>-->
+
+	 <div class="container">
+	    	<div class="jumbotron">
+		    	<h3 class="text-center">Search For Any Movie</h3>
+		    	<form id="searchForm">
+		    		<input type="text" class="form-control" style="width: 100%" id="searchText" placeholder="Search Movies...">
+		    	</form>
+		    </div>
+	    </div>
+
+    <div class="container">
+     	 <div id="movies" class="row"></div>
+    </div>
+
+
+<script type="text/javascript">
+	var username = document.getElementById('username');
+	var users_deserialized = JSON.parse(localStorage.getItem('users'));
+	var index = parseInt(localStorage.getItem('index'));
+
+	username.innerHTML = '<div class="userBox"><i class="fa fa-user"> </i> <a href="#" onclick="accountDetailsBox()">'+ users_deserialized[index].username
+	.toUpperCase();+'</a></div>'; 
+
+	function accountDetailsBox(){
+		var accountDetailsBox = document.getElementById('accountDetailsBox');
+		accountDetailsBox.classList.toggle('active');
+	}
+
+	function logout(){
+		var con = confirm('Are you sure you want to logout?');
+		if (con) {
+			setTimeout(()=>{
+				alert('You are successfully logout.');
+				window.open('index.html');
+				localStorage.removeItem('index');
+			},1000);
+		}
+		else{
+			return false;
+		}
+	}
+
+</script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="main.js"></script>
+
+</body>
+</html>
